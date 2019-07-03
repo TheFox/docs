@@ -1,12 +1,3 @@
----
-layout: post
-date: 
-title: 
-description: A HOWTO for multiple Google calendars.
-language: en
-categories: [Productivity]
-tags: [Google, iPhone, iPad, Sync, Tutorial, HOWTO, Mobile, Calendar, Synchronization, Configuration]
----
 
 *This post was original published on [Christian Mayer's Blog](https://blog.fox21.at/) on 2012-01-07 18:12:00 +0100.*
 

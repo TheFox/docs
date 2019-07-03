@@ -1,12 +1,3 @@
----
-layout: post
-date: 
-title: 
-description: A HOWTO for installing MariaDB and TokuDB.
-language: en
-categories: [Productivity]
-tags: [MySQL, SQL, DB, Database, MariaDB, TokuDB, HOWTO, Tutorial, Debian, Linux, Maria, Maria DB, Toku, Toku DB]
----
 
 *This post was original published on [Christian Mayer's Blog](https://blog.fox21.at/) on 2013-07-26 21:03:00 +0200.*
 
