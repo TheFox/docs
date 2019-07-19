@@ -2,7 +2,7 @@
 
 - Commands with a `$` at the beginning can be run as **normal** user.
 - Commands with a `#` at the beginning must be run as **root** user.
-- In this examples I assume your IPv6 address of `en0` interface is `2001:db8::2` and the default gateway is `2001:db8::1`.
+- In this examples I assume your IPv6 address of `en0` interface is `2001:db8::2` and the default gateway is your router `2001:db8::1`.
 - Tested under macOS 10.13.6 **High Sierra**.
 - Tested under macOS 10.14.5 **Mojave**.
 
