@@ -2,7 +2,7 @@
 
 - Commands with a `$` at the beginning can be run as **normal** user.
 - Commands with a `#` at the beginning must be run as **root** user.
-- In this examples I assume your IPv6 address of `en0` interface is `2001:db8::2` and the default gateway is your router `2001:db8::1`.
+- In this examples I assume your IPv6 address of `en0` interface is `2001:db8::2` and the default gateway is your router `2001:db8::1`. I use `2001:db8::3` as an example for an other device in the same network.
 - Tested under macOS 10.13.6 **High Sierra**.
 - Tested under macOS 10.14.5 **Mojave**.
 
@@ -27,19 +27,25 @@ $ man route
 ### Change default gateway
 
 ```
-route change -inet6 default -interface 2001:db8::1
+# route change -inet6 default -interface 2001:db8::1
 ```
 
 ### Remove default route
 
 ```
-route delete -inet6 ::/0
+# route delete -inet6 ::/0
 ```
 
 ### Remove default utun0 route
 
 ```
 # route delete -ifscope utun0 -inet6 ::/0
+```
+
+### Remove host route
+
+```
+# route delete -ifscope en0 -inet6 -host 2001:db8::3
 ```
 
 ## References
