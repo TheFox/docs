@@ -4,11 +4,11 @@ This document describes how to span multiple VLANs over a [Bridge Interface](htt
 
 ## Introduction
 
-There is difference between *having a VLAN endpoint per port* and *having multiple VLANs spanning over a [Bridge Interface](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge)*.
+There is a difference between *having a VLAN endpoint per port* and *having multiple VLANs spanning over a [Bridge Interface](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge)*.
 
 [Bridge VLAN Filtering](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering) describes how to setup a specific VLAN on a port. It matters on which ports the cables are connected since the ports untag the VLAN packets.
 
-This document describes how to span multiple VLANs over a Bridge. It should make clear that there is difference between one VLAN per port and spanning multiple VLANs over the whole bridge. The latter forwards all VLANs through the bridge, meaning that all ports receive all VLAN packets. All ports share the same VLANs, in- and outgoing, because the port itself and the bridge do not untag any VLAN packets. The VLAN packets will be untagged by VLAN interfaces, as you will see later.
+This document describes how to span multiple VLANs over a Bridge. It should make clear that there is difference between one VLAN per port and spanning multiple VLANs over the whole Bridge. The latter forwards all VLANs through the Bridge, meaning that all VLAN packets can go through all ports. The ports share the same VLANs, in- and outgoing, because the port itself and the Bridge do not untag any VLAN packets. The VLAN packets will be untagged by VLAN interfaces, as you will see later.
 
 ## Requirements
 
@@ -21,13 +21,11 @@ What do we want for our setup?
 - The router r1 is the default gateway for all devices in all VLANs.
 - Firewall rules. We do not want guests to connect to the Desktop VLAN nor the Server VLAN. Guests are allowed to connect only to the Internet.
 
-The Internet gateway is connected to the Ethernet port 1 (*eth1*) on the r1 router. Switches sw1 and sw2 are connected to Ethernet port 2 (*eth2*) and 3 (*eth3*). Both using a VLAN trunks for all VLANs. We assume that the router r1 will have 192.168.10.1 in the Desktop VLAN and 192.168.11.1 in the Server VLAN and 192.168.12.1 in the Guest VLAN. Devices in the Desktop VLAN will use 192.168.10.1 as default gateway, devices in the Server VLAN will use 192.168.11.1 as default gateway and devices in the Guest VLAN will use 192.168.12.1 as default gateway.
-
-**Note:** Since this document focus on VLANs I'll not cover NATing to the Internet. I assume this is already working, or not. Does not matter for this setup.
+The Internet gateway is connected to the Ethernet port 1 (*eth1*) on the r1 router. Switches sw1 and sw2 are connected to Ethernet port 2 (*eth2*) and 3 (*eth3*). Both using a VLAN trunk for all VLANs. We assume that the router r1 will have 192.168.10.1 in the Desktop VLAN and 192.168.11.1 in the Server VLAN and 192.168.12.1 in the Guest VLAN. Devices in the Desktop VLAN will use 192.168.10.1 as default gateway, devices in the Server VLAN will use 192.168.11.1 as default gateway and devices in the Guest VLAN will use 192.168.12.1 as default gateway. All owned by the same device, r1.
 
 ## Bridge Setup
 
-First add a new bridge.
+First add a new Bridge.
 
 ```
 /interface bridge add name=bridge1
@@ -40,6 +38,8 @@ Assign Port 2 and 3 to the bridge. Not the Internet gateway which is on *eth1*.
 add bridge=bridge1 interface=eth2
 add bridge=bridge1 interface=eth3
 ```
+
+**Note:** Since this document focus on VLANs I'll not cover NATing to the Internet. I assume this is already working, or not. It would be the same setup as if you would not use VLANs at all. So it does not matter for this example.
 
 ## VLAN Setup
 
@@ -114,4 +114,4 @@ Allow Guests to access the Internet and only the Internet.
 
 ## Conclusion
 
-In this setup the packets are flowing through the bridge without resistance. Those packets who wants to switch VLAN can be blocked by the firewall. In this way the VLANs can be isolated from each other. They will be untagged at the vlan_* interfaces, routed, and forwarded (or not) on the same or on a different vlan_* interface.
+In this setup the packets are flowing through the Bridge without resistance. Those packets who wants to switch VLAN can be blocked by the firewall. In this way the VLANs can be isolated from each other. They will be untagged at the vlan_* interfaces, routed, and forwarded (or not) on the same or on a different vlan_* interface.
