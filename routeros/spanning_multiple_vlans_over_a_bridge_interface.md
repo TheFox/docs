@@ -88,12 +88,12 @@ add action=accept chain=input dst-port=22 protocol=tcp src-address=192.168.10.0/
 add action=accept chain=input dst-port=80 protocol=tcp src-address=192.168.10.0/24 dst-address=192.168.10.1 in-interface=vlan_desktop comment="Allow HTTP from Desktop VLAN"
 ```
 
-The last rule for the input chain should drop everything we didn't explicitly allow.
+The last rule for the input chain should **drop everything** we didn't explicitly allow.
 
-**Note:** Make sure you put all other rules above this one. All services which the router should provide must be explicitly allowed and above the *Drop Everything Else* rule. Since the RouterOS comes with an default policy *allow* we have to add this rule manually. If you do not add this rule you maybe allow the router accessed from the Internet.
+**Note:** Make sure you put all other rules above the following one. All services which the router should provide must be explicitly allowed and above the *Drop Everything Else* rule. Since RouterOS comes with a default policy *allow* we have to add this rule manually. If you do not add this rule you maybe allow the router accessed from the Internet.
 
 ```
-/ip firewall filter add action=drop chain=input comment="End Of Input (Drop)"
+/ip firewall filter add action=drop chain=input comment="End Of Input (Drop Everything Else)"
 ```
 
 Now the forward rules.
@@ -112,6 +112,14 @@ Allow Guests to access the Internet and only the Internet.
 /ip firewall filter add action=accept chain=forward in-interface=vlan_guest out-interface=eth1 src-address=192.168.12.0/24 comment="Allow all from Guest VLAN to Internet"
 ```
 
+Again, drop everything. This time in the **forward chain**.
+
+**Note:** If you would not add the following rule you would have to manually drop everything which comes from the Guest VLAN. The other rules are useless without a bottom rule dropping everything.
+
+```
+/ip firewall filter add action=drop chain=forward comment="End Of Forward (Drop Everything Else)"
+```
+
 ## Conclusion
 
-In this setup the packets are flowing through the Bridge without resistance. Those packets who wants to switch VLAN can be blocked by the firewall. In this way the VLANs can be isolated from each other. They will be untagged at the vlan_* interfaces, routed, and forwarded (or not) on the same or on a different vlan_* interface.
+In this setup the packets are flowing through the Bridge without resistance. Those packets who wants to switch VLAN can be blocked by the firewall. In this way the VLANs can be isolated from each other. The packets will be untagged at the vlan_* interfaces, routed, and forwarded on the same or on a different VLAN interface.
