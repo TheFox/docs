@@ -75,9 +75,9 @@ Allow ping: this rules make sure that only the devices from each VLAN are able t
 
 ```
 /ip firewall filter
-add action=accept chain=input comment="Allow ICMP from Desktop VLAN" dst-address=192.168.10.1 in-interface=vlan_desktop protocol=icmp src-address=192.168.10.0/24
-add action=accept chain=input comment="Allow ICMP from Server VLAN" dst-address=192.168.11.1 in-interface=vlan_server protocol=icmp src-address=192.168.11.0/24
-add action=accept chain=input comment="Allow ICMP from Guest VLAN" dst-address=192.168.12.1 in-interface=vlan_guest protocol=icmp src-address=192.168.12.0/24
+add action=accept chain=input protocol=icmp src-address=192.168.10.0/24 dst-address=192.168.10.1 in-interface=vlan_desktop comment="Allow ICMP from Desktop VLAN"
+add action=accept chain=input protocol=icmp src-address=192.168.11.0/24 dst-address=192.168.11.1 in-interface=vlan_server comment="Allow ICMP from Server VLAN"
+add action=accept chain=input protocol=icmp src-address=192.168.12.0/24 dst-address=192.168.12.1 in-interface=vlan_guest comment="Allow ICMP from Guest VLAN"
 ```
 
 Allow all Desktop devices to connect to the router. Those rules are necessary not to loose the access to the router itself.
