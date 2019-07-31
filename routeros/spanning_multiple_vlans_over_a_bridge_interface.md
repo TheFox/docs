@@ -122,4 +122,4 @@ Again, drop everything. This time in the **forward chain**.
 
 ## Conclusion
 
-In this setup the packets are flowing through the Bridge without resistance as long as they stay in the same VLAN. Those packets who wants to switch VLAN can be blocked by the firewall using VLAN interfaces. In this way the VLANs can be isolated from each other. The packets will be untagged at the vlan_* interfaces, routed, blocked or forwarded on a different VLAN interface.
+In this setup the packets are flowing through the Bridge without resistance as long as they stay in the same VLAN. Those packets who wants to switch VLAN can be blocked by the firewall using VLAN interfaces. In this way VLANs can be isolated from each other. The packets will be untagged at the vlan_* interfaces, routed, blocked or forwarded on a different VLAN interface.
