@@ -3,9 +3,13 @@
 
 # Apache2 Restart
 
+## Introduction
+
 This post describes how to reconfigure and restart an [Apache](https://www.apache.org/) server in a secure way. *Secure* is relative. Of course there is always a chance that someting goes wrong. This approach limits the chances. Especially it's a good approach for changing an existing configuration you have not touched yet and to have no [downtime](https://en.wikipedia.org/wiki/Downtime).
 
 This may also work for other [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) [daemons](https://en.wikipedia.org/wiki/Daemon_(computing)). It's not limited to Apache, but some commands are Apache specific.
+
+## Restarting
 
 1. Backup  
   Before you make any changes to the configuration make a backup of the current configuration. Maybe this step isn't required if the configuration files are already under a version control system (like [Git](https://en.wikipedia.org/wiki/Git)).
