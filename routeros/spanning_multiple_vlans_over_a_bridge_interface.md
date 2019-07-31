@@ -8,7 +8,7 @@ There is a difference between *having a VLAN endpoint per port* and *having mult
 
 [Bridge VLAN Filtering](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering) describes how to setup a specific VLAN on a port. It matters on which ports the cables are connected since the ports untag the VLAN packets.
 
-This document describes how to span multiple VLANs over a Bridge. It should make clear that there is difference between one VLAN per port and spanning multiple VLANs over the whole Bridge. The latter forwards all VLANs through the Bridge, meaning that all VLAN packets can go through all ports. The ports share the same VLANs, in- and outgoing, because the port itself and the Bridge do not untag any VLAN packets. The VLAN packets will be untagged by VLAN interfaces, as you will see later.
+This document describes how to span multiple VLANs over a Bridge. It should make clear that there is a difference between one VLAN per port and spanning multiple VLANs over the whole Bridge. The latter forwards all VLANs through the Bridge, meaning that all VLAN packets can go through all ports. The ports share the same VLANs, in- and outgoing, because the port itself and the Bridge do not untag any VLAN packets. The VLAN packets will be untagged by VLAN interfaces, as you will see later.
 
 ## Requirements
 
