@@ -80,7 +80,7 @@ add action=accept chain=input protocol=icmp src-address=192.168.11.0/24 dst-addr
 add action=accept chain=input protocol=icmp src-address=192.168.12.0/24 dst-address=192.168.12.1 in-interface=vlan_guest comment="Allow ICMP from Guest VLAN"
 ```
 
-Allow all Desktop devices to connect to the router. Those rules are necessary not to loose the access to the router itself.
+Allow all Desktop devices to connect to the router. Those rules are necessary not to loose the access to the router itself. Since we will drop everything else at the bottom of the input chain the following rules are important.
 
 ```
 /ip firewall filter
