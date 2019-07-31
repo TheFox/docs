@@ -17,11 +17,13 @@ What do we want for our setup?
 - A Router, named *r1*.
 - Two Switches, named *sw1* and *sw2*.
 - An Internet gateway.
-- Three VLANs: one Desktop VLAN for desktop devices using VLAN ID 10. One VLAN for servers using VLAN ID 11. Another for guests using VLAN ID 12.
+- Three VLANs: one **Desktop VLAN** for desktop PCs using VLAN ID 10. One VLAN for **servers** using VLAN ID 11. Another for **guests** using VLAN ID 12.
 - The router r1 is the default gateway for all devices in all VLANs.
 - Firewall rules. We do not want guests to connect to the Desktop VLAN nor the Server VLAN. Guests are allowed to connect only to the Internet.
 
 The Internet gateway is connected to the Ethernet port 1 (*eth1*) on the r1 router. Switches sw1 and sw2 are connected to Ethernet port 2 (*eth2*) and 3 (*eth3*). Both using a VLAN trunk for all VLANs. We assume that the router r1 will have 192.168.10.1 in the Desktop VLAN and 192.168.11.1 in the Server VLAN and 192.168.12.1 in the Guest VLAN. Devices in the Desktop VLAN will use 192.168.10.1 as default gateway, devices in the Server VLAN will use 192.168.11.1 as default gateway and devices in the Guest VLAN will use 192.168.12.1 as default gateway. All owned by the same device, r1.
+
+**Note:** Consider not using VLAN ID 1 for your default VLAN since this ID has a special treatment. In small environments it makes your life easier using the same VLAN ID for the same subnet. ID 10 for 192.168.10.x, ID 11 for 192.168.11.x and so on.
 
 ## Bridge Setup
 
