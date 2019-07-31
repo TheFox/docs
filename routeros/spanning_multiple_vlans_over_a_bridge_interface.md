@@ -114,7 +114,7 @@ Allow Guests to access the Internet and only the Internet.
 
 Again, drop everything. This time in the **forward chain**.
 
-**Note:** If you would not add the following rule you would have to manually drop everything which comes from the Guest VLAN. The other rules are useless without a bottom rule dropping everything.
+**Note:** If you would not add the following rule you would have to manually drop everything which comes from the Guest VLAN. The other rules are useless without a bottom rule dropping everything else.
 
 ```
 /ip firewall filter add action=drop chain=forward comment="End Of Forward (Drop Everything Else)"
