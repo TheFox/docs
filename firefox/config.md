@@ -4,6 +4,12 @@
 about:config
 ```
 
+## HTTPS-only
+
+```
+dom.sequrity.https_only_mode = true
+```
+
 ## Disable DNS-over-HTTPS
 
 - [Info](https://support.mozilla.org/en-US/kb/firefox-dns-over-https)
