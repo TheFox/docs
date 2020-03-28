@@ -4,8 +4,12 @@
 
 ```
 cd EasyRSA-3.0.4_server/
-./easyrsa gen-req client1
-./easyrsa --subject-alt-name="DNS:client1.example.com,DNS:client1.com" gen-req client1
+
+# Simple
+./easyrsa gen-req client1 nopass
+
+# With subject
+./easyrsa --subject-alt-name="DNS:client1.example.com,DNS:client1.com" gen-req client1 nopass
 ```
 
 ```
