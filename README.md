@@ -11,4 +11,4 @@
 - [RouterOS docs](routeros)
 - [SSL/TLS docs](tls)
 - [X11 docs](x11)
-- [ZFS docs](xfs)
+- [ZFS docs](zfs)
