@@ -1,6 +1,7 @@
 # Synology RS1219+
 
 ```bash
+ll -drt /dev/*usb*
 screen /dev/tty.usbserial-00000000 115200
 ```
 
