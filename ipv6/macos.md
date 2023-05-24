@@ -46,6 +46,14 @@ sudo route delete -ifscope utun0 -inet6 ::/0
 sudo route delete -ifscope en0 -inet6 -host 2001:db8::3
 ```
 
+### Disable IPv6
+
+```
+networksetup -listallnetworkservices
+networksetup -setv6off LAN
+networksetup -setv6off WLAN
+```
+
 ## References
 
 - [Linux IPv6 HOWTO](https://mirrors.deepspace6.net/Linux+IPv6-HOWTO/x1144.html)
