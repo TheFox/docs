@@ -7,7 +7,7 @@ about:config
 ## HTTPS-only
 
 ```
-dom.sequrity.https_only_mode = true
+dom.security.https_only_mode = true
 ```
 
 ## Disable DNS-over-HTTPS
