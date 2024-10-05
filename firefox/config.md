@@ -25,3 +25,9 @@ network.trr.mode = 5
 ```
 media.peerconnection.enabled = false
 ```
+
+## Load JavaScript generated Tabs in background
+
+```
+browser.tabs.loadDivertedInBackground = true
+```
