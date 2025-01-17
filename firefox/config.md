@@ -31,3 +31,9 @@ media.peerconnection.enabled = false
 ```
 browser.tabs.loadDivertedInBackground = true
 ```
+
+## Small Tabs
+
+```
+browser.uidensity = 1
+```
