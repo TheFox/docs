@@ -37,3 +37,9 @@ browser.tabs.loadDivertedInBackground = true
 ```
 browser.uidensity = 1
 ```
+
+## Vertical Tabs
+
+```
+sidebar.revamp = true
+```
